@@ -1,1 +1,3 @@
 /src/Gemfile.lock
+_site
+.sass-cache
