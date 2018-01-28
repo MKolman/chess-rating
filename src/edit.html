@@ -1,0 +1,42 @@
+---
+layout: page
+title: Edit
+permalink: /edit/
+---
+
+
+<h1> Time format </h1>
+<select id="time-format" onchange="load()">
+    <option value="1evbrh" selected="">15min + 10s</option>
+    <option value="k0n71" selected="">10min + 10s</option>
+    <option value="rnf65">5min + 5s</option>
+</select>
+<br><br>
+
+<textarea name="data" id="value" style="width: 500px; height: 300px;">
+</textarea>
+<br>
+<button onclick="send()">Send</button>
+
+<script type="text/javascript">
+    function load() {
+        $.ajax({
+            url: URL + $("#time-format").val(),
+            success: function(data) {
+                $("#value").val(JSON.stringify(data));
+            }
+        });
+    }
+    function send() {
+        $.ajax({
+            url: URL + $("#time-format").val(),
+            data: $("#value").val(),
+            type:"PUT",
+            contentType:"application/json; charset=utf-8",
+            success: function(data) {
+                $("#value").val(JSON.stringify(data));
+            }
+        });
+    }
+    load();
+</script>

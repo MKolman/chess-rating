@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1> Time format </h1>
+  <select id="time-format" onchange="setTimeFormat()">
+    <option value="1evbrh" selected="">15min + 10s</option>
+    <option value="k0n71" selected="">10min + 10s</option>
+    <option value="rnf65">5min + 5s</option>
+  </select>
+  <br><br>
+
+  <h2>Add new game</h2>
+  <select id="new-game-first" class='user-dropdown'>
+  </select>
+  <select id="new-game-second" class='user-dropdown'>
+  </select>
+  <select id="new-game-score">
+    <option value="1.0">1-0</option>
+    <option value="0.5">½-½</option>
+    <option value="0.0">0-1</option>
+  </select>
+
+  <button id="new-game-button" onclick="addNewGame();">Save</button>
+
+  <br><br>
+
+  <h2>Add new player</h2>
+  <input id="new-user-input" type="text" placeholder="Player's name" />
+  <button id="new-user-button" onclick="addNewUser()"> Save </button>
+
+  <br><br>
+
+  <h1> Scoreboard </h1>
+  <table id="user-rating">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>ELO rating</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+
+  <h1> Games </h1>
+  <table id="recent-games">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>White</th>
+        <th>Black</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
