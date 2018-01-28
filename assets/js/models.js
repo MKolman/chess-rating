@@ -13,7 +13,7 @@ function getDiffRating(old_rating, oponent_rating, score) {
         the change in player's ELO rating
         Note: the opponents ELO rating changes for the negative of this
     */
-    let expected_score = 1 / (1 + 10**((old_rating-oponent_rating)/400));
+    let expected_score = 1 / (1 + 10**((oponent_rating-old_rating)/400));
     return Math.round(ELO_K * (score - expected_score));
 }
 
