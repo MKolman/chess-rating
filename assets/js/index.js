@@ -11,7 +11,7 @@ function parseScore(score) {
 function loadUI() {
     loadUserTable(api.users);
     loadUserDropdowns(api.users);
-    loadGameTable(api.games);
+    loadGameTable(api.games, api.user_by_id);
 }
 
 function loadUserTable(users) {
@@ -24,12 +24,14 @@ function loadUserTable(users) {
     }
 }
 
-function loadGameTable(games) {
+function loadGameTable(games, user_by_id) {
     let table_body = $("table#recent-games tbody");
     table_body.html('');
     for (let i = 0; i < games.length; i++) {
         let game = games[i];
-        table_body.append(`<tr><td>${new Date(game.time)}</td><td>${game.players[0]}</td><td>${game.players[1]}</td><td>${parseScore(game.score)}</td></tr>`);
+        table_body.append(
+            `<tr><td>${new Date(game.time)}</td><td>${user_by_id[game.players[0]].name}</td>
+            <td>${user_by_id[game.players[1]].name}</td><td>${parseScore(game.score)}</td></tr>`);
     }
 }
 
