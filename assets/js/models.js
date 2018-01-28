@@ -1,5 +1,5 @@
 const ELO_K = 32;  // The rate of change for ELO raitngs
-const ELO_MEAN = 1000;  // The average ELO rating
+const ELO_MEAN = 800;  // The average ELO rating
 const DEFAULT_ID = 'k0n71';
 const URL = 'https://api.myjson.com/bins/';
 
