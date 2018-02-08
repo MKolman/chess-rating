@@ -41,8 +41,8 @@ function Game(players, score, old_ratings, new_ratings=null, time=null, id=null)
     if (new_ratings === null) {
         let diff_rating = getDiffRating(old_ratings[0], old_ratings[1], score);
         new_ratings = [old_ratings[0]+diff, old_ratings[1]-diff];
-      }
-      this.new_ratings = new_ratings;
+    }
+    this.new_ratings = new_ratings;
 
     if (time === null) {
         time = (new Date()).getTime();
