@@ -12,6 +12,7 @@ function loadUI() {
     loadUserTable(api.users);
     loadUserDropdowns(api.users);
     loadGameTable(api.games, api.user_by_id);
+    loadChart();
 }
 
 function loadUserTable(users) {
