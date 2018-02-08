@@ -60,6 +60,18 @@ function addNewGame() {
     api.save();
 }
 
+function deleteLastGame() {
+    if (api.games.length <= 0) return
+
+    let txt = "Are you sure you want to delete the last game?\n";
+    txt += JSON.stringify(api.games[api.games.length-1])
+    txt += "\nType 'delete' if you are certain."
+    if (prompt(txt) == "delete") {
+        api.deleteGame();
+        loadUI();
+    }
+}
+
 function setTimeFormat() {
     let id = $("#time-format").val();
     console.log(id);

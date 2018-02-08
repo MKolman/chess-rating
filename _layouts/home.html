@@ -4,7 +4,7 @@ layout: default
 
 <div class="home">
 
-  <h1> Time format </h1>
+  <h1> Time format <span class="button" onclick="setTimeFormat()">↻</span></h1>
   <select id="time-format" onchange="setTimeFormat()">
     <option value="1evbrh" selected="">15min + 10s</option>
     <option value="k0n71" selected="">10min + 10s</option>
@@ -46,7 +46,7 @@ layout: default
   </table>
 
 
-  <h1> Games </h1>
+  <h1> Games <span class="button" onclick="deleteLastGame()">✘</span></h1>
   <table id="recent-games">
     <thead>
       <tr>
