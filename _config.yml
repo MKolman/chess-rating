@@ -16,7 +16,7 @@
 title: Kolman chess ratings
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  ELO ratings for members of Kolman chess leauge.
+  ELO ratings for members of Kolman chess league. Made by Maks Kolman
 baseurl: "/chess-rating" # the subpath of your site, e.g. /blog
 url: "https://mkolman.github.com" # the base hostname & protocol for your site, e.g. http://example.com
 
