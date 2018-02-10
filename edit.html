@@ -6,13 +6,7 @@ permalink: /edit/
 
 
 <h1> Time format </h1>
-<select id="time-format" onchange="load()">
-    <option value="1evbrh" selected="">15min + 10s</option>
-    <option value="k0n71" selected="">10min + 10s</option>
-    <option value="rnf65">5min + 5s</option>
-</select>
-<br><br>
-
+<input type="text" id="json-id" onchange="load()" value="{{ site.categories_json }}"/><br>
 <textarea name="data" id="value" style="width: 500px; height: 300px;">
 </textarea>
 <br>
@@ -21,20 +15,20 @@ permalink: /edit/
 <script type="text/javascript">
     function load() {
         $.ajax({
-            url: URL + $("#time-format").val(),
+            url: JSON_URL + $("#json-id").val(),
             success: function(data) {
-                $("#value").val(JSON.stringify(data));
+                $("#value").val(JSON.stringify(data, null, '  '));
             }
         });
     }
     function send() {
         $.ajax({
-            url: URL + $("#time-format").val(),
+            url: JSON_URL + $("#json-id").val(),
             data: $("#value").val(),
             type:"PUT",
             contentType:"application/json; charset=utf-8",
             success: function(data) {
-                $("#value").val(JSON.stringify(data));
+                $("#value").val(JSON.stringify(data, null, '  '));
             }
         });
     }

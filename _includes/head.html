@@ -11,6 +11,13 @@
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+  <script type="text/javascript">
+    const CATEGORIES_JSON_ID = "{{ site.categories_json }}";
+    const ELO_K = 32;  // The rate of change for ELO raitngs
+    const ELO_MEAN = 800;  // The average ELO rating
+    const DEFAULT_JSON_ID = 'k0n71';
+    const JSON_URL = 'https://api.myjson.com/bins/';
+  </script>
   <script type="text/javascript" src="{{ "/assets/js/models.js" | relative_url }}"></script>
   <script type="text/javascript" src="{{ "/assets/js/charting.js" | relative_url }}"></script>
   <script type="text/javascript" src="{{ "/assets/js/index.js" | relative_url }}"></script>

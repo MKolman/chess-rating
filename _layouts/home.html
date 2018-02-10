@@ -4,12 +4,11 @@ layout: default
 
 <div class="home">
 
-  <h1> Time format <span class="button" onclick="setTimeFormat()">↻</span></h1>
-  <select id="time-format" onchange="setTimeFormat()">
-    <option value="1evbrh" selected="">15min + 10s</option>
-    <option value="k0n71" selected="">10min + 10s</option>
-    <option value="rnf65">5min + 5s</option>
+  <h1> Category <span class="button" onclick="setTimeFormat()">↻</span></h1>
+  <select id="categories" onchange="setTimeFormat()">
   </select>
+  <br>
+  <span class="button" onclick="addNewCategory()"> Add new category </span>
   <br><br>
 
   <h2>Add new game</h2>
@@ -25,11 +24,8 @@ layout: default
 
   <button id="new-game-button" onclick="addNewGame();">Save</button>
 
-  <br><br>
-
-  <h2>Add new player</h2>
-  <input id="new-user-input" type="text" placeholder="Player's name" />
-  <button id="new-user-button" onclick="addNewUser()"> Save </button>
+  <br>
+  <span class="button" onclick="addNewUser()"> Add new player </span>
 
   <br><br>
 
@@ -62,3 +58,9 @@ layout: default
   <h1> ELO rating chart <span class="button" onclick="loadChart(true)">⌚</span> <span class="button" onclick="loadChart(false)">#</span></h1>
   <canvas id="elo-chart"></canvas>
 </div>
+
+<script>
+    let categories = new Categories(JSON_URL + CATEGORIES_JSON_ID);
+    categories.fetch(loadCategoryDropdown);
+    let api = new Api(JSON_URL + DEFAULT_JSON_ID);
+</script>

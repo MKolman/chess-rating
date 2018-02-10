@@ -28,6 +28,8 @@ plugins:
 sass:
     sass_dir: _sass
 
+categories_json: bg6et
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

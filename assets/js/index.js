@@ -45,11 +45,30 @@ function loadUserDropdowns(users) {
     }
 }
 
+function loadCategoryDropdown() {
+    let select = $("#categories");
+    select.html('');
+    for (let i = 0; i < categories.data.length; i++) {
+        let c = categories.data[i];
+        select.append(`<option value="${c.id}">${c.name}</option>`);
+    }
+    setTimeFormat();
+}
+
+function addNewCategory() {
+    let name = prompt("You want to add another category. How do you want to name it?");
+    if (name !== null && name.length > 0) {
+        categories.newCategory(name, loadCategoryDropdown);
+    }
+}
+
 function addNewUser() {
-    let name = $("#new-user-input").val();
-    api.newUser(name);
-    loadUI();
-    api.save();
+    let name = prompt("You want to add a new player. What is their name?");
+    if (name !== null && name.length > 0) {
+        api.newUser(name);
+        loadUI();
+        api.save();
+    }
 }
 
 function addNewGame() {
@@ -74,12 +93,7 @@ function deleteLastGame() {
 }
 
 function setTimeFormat() {
-    let id = $("#time-format").val();
-    console.log(id);
-    api = new Api(URL + id);
+    let id = $("#categories").val();
+    api = new Api(JSON_URL + id);
     api.fetch(loadUI);
 }
-
-let api = new Api(URL + DEFAULT_ID);
-api.fetch(loadUI);
-

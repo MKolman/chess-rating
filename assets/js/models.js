@@ -1,8 +1,3 @@
-const ELO_K = 32;  // The rate of change for ELO raitngs
-const ELO_MEAN = 800;  // The average ELO rating
-const DEFAULT_ID = 'k0n71';
-const URL = 'https://api.myjson.com/bins/';
-
 function getDiffRating(old_rating, oponent_rating, score) {
     /** Calculates the change in ELO ratings.
     params:
@@ -17,6 +12,66 @@ function getDiffRating(old_rating, oponent_rating, score) {
     return Math.round(ELO_K * (score - expected_score));
 }
 
+function Categories(uri) {
+    if (!new.target) {
+        return new Categories(uri);
+    }
+    let self = this;
+    this.uri = uri;
+    this.data = [];
+    this.fetched = false;
+
+
+    this.fetch = function (callback) {
+        $.ajax({
+            url: self.uri,
+            dataType: 'json',
+            success: function(json_data){
+                console.log(json_data);
+                self.data = json_data.categories;
+                self.fetched = true;
+                if (callback) {
+                    callback();
+                }
+            }
+        });
+    }
+    this.newCategory = function(name, callback) {
+        if (!self.fetched) {
+            alert('Cannot save. Data was not fetched.');
+            return;
+        }
+        $.ajax({
+            url: JSON_URL,
+            type: "POST",
+            data: JSON.stringify({users: [], games: []}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data, textStatus, jqXHR){
+                console.log(data);
+                let new_id = data.uri.replace(JSON_URL, "");
+                self.data.push({id: new_id, name: name});
+                if (callback) {
+                    callback();
+                }
+                // self.save();
+            }
+        });
+    }
+
+    self.save = function() {
+        if (!self.fetched) {
+            alert('Cannot save. Data was not fetched.');
+            return;
+        }
+        $.ajax({
+            url: self.uri,
+            data: JSON.stringify(self.data),
+            type:"PUT",
+            contentType:"application/json; charset=utf-8",
+        });
+    }
+}
 
 function User(name, rating=ELO_MEAN, id=null) {
     if (!new.target) {
