@@ -1,9 +1,14 @@
+MY_CHART = null;
+
 function loadChart(use_time=true) {
     if ($("#elo-chart").length == 0) {
         return;
     }
+    if (MY_CHART !== null) {
+        MY_CHART.clear();
+    }
     let ctx = $("#elo-chart")[0].getContext('2d');
-    let my_chart = new Chart(ctx, {
+    MY_CHART = new Chart(ctx, {
         type: "line",
         data: {
             datasets: gatherData(api, use_time)
