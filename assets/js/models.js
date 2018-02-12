@@ -42,7 +42,7 @@ function Categories(uri) {
             return;
         }
         $.ajax({
-            url: JSON_URL,
+            url: JSON_URL.replace("bins/", "bins"),
             type: "POST",
             data: JSON.stringify({users: [], games: []}),
             contentType: "application/json; charset=utf-8",
@@ -54,7 +54,7 @@ function Categories(uri) {
                 if (callback) {
                     callback();
                 }
-                // self.save();
+                self.save();
             }
         });
     }
@@ -66,7 +66,7 @@ function Categories(uri) {
         }
         $.ajax({
             url: self.uri,
-            data: JSON.stringify(self.data),
+            data: JSON.stringify({categories: self.data}),
             type:"PUT",
             contentType:"application/json; charset=utf-8",
         });
@@ -134,6 +134,9 @@ function Api(uri) {
             url: self.uri,
             dataType: 'json',
             success: function(json_data){
+                if (json_data.users === undefined) {
+                    return
+                }
                 // Parse users
                 self.users = [];
                 self.user_by_id = {};
