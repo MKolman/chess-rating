@@ -5,7 +5,7 @@ function loadChart(use_time=true) {
         return;
     }
     if (MY_CHART !== null) {
-        MY_CHART.clear();
+        MY_CHART.destroy();
     }
     let ctx = $("#elo-chart")[0].getContext('2d');
     MY_CHART = new Chart(ctx, {
